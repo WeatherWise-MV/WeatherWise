@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import sadFace from "../assets/images/sad-face.png";
-import "../external/styles/NotFound.css";
+import "../external/styles/notFound.css";
 
 const NotFound = () => {
   return (

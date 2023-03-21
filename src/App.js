@@ -4,7 +4,7 @@ import Home from "./pages/home";
 import Settings from "./pages/settings";
 import Weather from "./pages/weather";
 import WeatherForecast from "./pages/weatherForecast";
-import NotFound from "./pages/NotFound";
+import NotFound from "./pages/notFound";
 
 function App() {
   return (
