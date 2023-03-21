@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./settings.css"
+import "../external/styles/settings.css";
 
 function Settings() {
   const [defaultLocation, setDefaultLocation] = useState("");
