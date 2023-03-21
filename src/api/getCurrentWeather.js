@@ -1,7 +1,10 @@
+// interal/external libs
 import jQuery from "jquery";
 import { db } from "../database/db";
 import { getCurrentDate } from "../external/scripts/utilities";
 import Swal from "sweetalert2";
+
+// assets
 import Thunder from "../assets/svg/thunder.svg";
 import Day from "../assets/svg/day.svg";
 import Drizzle from "../assets/svg/rainy-5.svg";
