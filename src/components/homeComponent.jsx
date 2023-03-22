@@ -28,41 +28,41 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center; /* horizontally center the content */
   align-items: center; /* vertically center the content */
-  width: 380px;
-  padding: 20px 10px;
+  width: 23.75rem;
+  padding: 1.25rem 0.625rem;
   margin: auto;
-  border-radius: 4px;
-  box-shadow: 0 3px 6px 0 #555;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.1875rem 0.375rem 0 #555;
   background: white;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `;
 
 export const HomeLabel = styled.span`
-    color: black;
-    margin: 20px auto;
-    font-size: 18px;
-    font-weight: bold;
+  color: black;
+  margin: 1.25rem auto;
+  font-size: 1.125rem;
+  font-weight: bold;
 `;
 
 export const SearchLocationLabel = styled.span`
-    color: black;
-    margin: 10px auto;
-    font-size: 18px;
-    font-weight: bold;
+  color: black;
+  margin: 0.625rem auto;
+  font-size: 1.125rem;
+  font-weight: bold;
 `;
 
 export const SearchButton = styled.form`
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin: 20px;
+  margin: 1.25rem;
   border: black solid 1px;
   border-radius: 2px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   
   & input {
-    padding: 10px;
-    font-size: 14px;
+    padding: 0.625rem;
+    font-size: 0.875rem;
     border: none;
     outline: none;
     font-weight: bold;
@@ -70,8 +70,8 @@ export const SearchButton = styled.form`
 
   & button {
     background-color: black;
-    font-size: 14px;
-    padding: 0 10px;
+    font-size: 0.875rem;
+    padding: 0 0.625rem;
     color: white;
     border: none;
     outline: none;
