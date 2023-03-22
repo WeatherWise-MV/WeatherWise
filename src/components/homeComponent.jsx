@@ -118,12 +118,30 @@ export const SearchButton = styled.form`
 `;
 
 export const SettingsButton = styled.div`
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  display: flex;
+  align-items: center;
   cursor: pointer;
   color: white;
-  margin-top: 1.25rem;
-  justify-content: right;
   text-decoration: none;
   font-size: 1.125rem;
   font-weight: bold;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `;
+
+export const SettingsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+`;
+
+export const SettingsText = styled.div`
+  font-weight: bold;
+  margin-right: 0.5rem;
+  text-decoration: none;
+  underline: none;
+  color: white;
+`;
+
