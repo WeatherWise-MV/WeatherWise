@@ -12,10 +12,31 @@ const animateBackground = keyframes`
   }
 `;
 
+const typingAnimation = keyframes`
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+`;
+
+const blinkingCursor = keyframes`
+  0%, 100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
+  }
+  99.99% {
+    border-color: white;
+  }
+`;
+
 export const WeatherBackground = styled.div`
   display: flex;
-  justify-content: center; /* horizontally center the content */
-  align-items: center; /* vertically center the content */
+  justify-content: center;
+  align-items: center;
   height: 100vh;
   background: linear-gradient(-45deg, #ff9966, #ff5e62, #ff9966, #d9af8f);
   background-size: 400% 400%;
@@ -23,11 +44,32 @@ export const WeatherBackground = styled.div`
   overflow: hidden;
 `;
 
+export const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const HomeLabel = styled.span`
+  display: flex;
+  color: white;
+  margin-bottom: 1.25rem;
+  font-size: 1.125rem;
+  font-weight: bold;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 0.125rem solid white;
+  animation: ${typingAnimation} 4s steps(100, end),
+             ${blinkingCursor} 1s step-end infinite;
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center; /* horizontally center the content */
-  align-items: center; /* vertically center the content */
+  justify-content: center;
+  align-items: center;
   width: 23.75rem;
   padding: 1.25rem 0.625rem;
   margin: auto;
@@ -37,18 +79,13 @@ export const Container = styled.div`
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `;
 
-export const HomeLabel = styled.span`
-  color: black;
-  margin: 1.25rem auto;
-  font-size: 1.125rem;
-  font-weight: bold;
-`;
-
 export const SearchLocationLabel = styled.span`
   color: black;
   margin: 0.625rem auto;
   font-size: 1.125rem;
   font-weight: bold;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const SearchButton = styled.form`
@@ -78,4 +115,15 @@ export const SearchButton = styled.form`
     cursor: pointer;
     font-weight: bold;
   }
+`;
+
+export const SettingsButton = styled.div`
+  cursor: pointer;
+  color: white;
+  margin-top: 1.25rem;
+  justify-content: right;
+  text-decoration: none;
+  font-size: 1.125rem;
+  font-weight: bold;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `;
