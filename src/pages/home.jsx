@@ -14,7 +14,7 @@ function Home() {
                     <SearchLocationLabel>Provide location for weather info</SearchLocationLabel>
                     <SearchButton>
                         <input placeholder="Search location..." value={location} onChange={(event) => setLocation(event.target.value)}/>
-                        <button type="submit" onClick={() => history.push(`/forecast/${location}`)}>Search</button>
+                        <button type="submit"}>Search</button>
                     </SearchButton>
                 </Container>
                 <SettingsButton>
