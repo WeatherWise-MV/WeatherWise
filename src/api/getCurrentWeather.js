@@ -222,3 +222,5 @@ export const getCurrentWeather = (location) => {
 		});
 	});
 };
+
+export default getCurrentWeather;

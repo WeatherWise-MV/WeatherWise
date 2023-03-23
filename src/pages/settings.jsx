@@ -48,7 +48,7 @@ function Settings() {
             value={tempUnit}
             onChange={(e) => setTempUnit(e.target.value)}
           >
-            <option value="D">Degrees Celsius</option>
+            <option value="C">Celsius</option>
             <option value="K">Kelvin</option>
             <option value="F">Fahrenheit</option>
           </select>

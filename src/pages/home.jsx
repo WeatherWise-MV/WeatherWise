@@ -1,10 +1,17 @@
-import React,  { useState, useEffect } from 'react';
-import { Container, HomeLabel, SearchLocationLabel, SearchButton, SettingsButton, WeatherBackground, ContentContainer, Glow } from '../components/homeComponent';
+import React,  { useState } from 'react';
+import { Container, HomeLabel, SearchLocationLabel, SearchButton, SettingsButton, WeatherBackground, ContentContainer, SettingsContainer, SettingsText } from '../components/homeComponent';
 import { FaCog } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-function Home() {
+const Home = () => {
     const [location, setLocation] = useState('');
+    const navigate = useNavigate();    
+
+    const handleSearch = (event) => {
+        event.preventDefault();
+        navigate(`/weather?city=${location}`);
+    };
 
     return (
         <WeatherBackground>
@@ -12,17 +19,27 @@ function Home() {
                 <HomeLabel>Welcome to WeatherWise - All Things Weather!</HomeLabel>
                 <Container>
                     <SearchLocationLabel>Provide location for weather info</SearchLocationLabel>
-                    <SearchButton>
-                        <input placeholder="Search location..." value={location} onChange={(event) => setLocation(event.target.value)}/>
-                        <button type="submit"}>Search</button>
-                    </SearchButton>
+                    <form onSubmit={handleSearch}>
+                        <SearchButton>
+                            <input 
+                            placeholder="Search location..." 
+                            value={location} 
+                            onChange={(event) => setLocation(event.target.value)}
+                            />
+
+                            <button type="button" onClick={handleSearch}>Search</button>
+                        </SearchButton>
+                    </form>
                 </Container>
                 <SettingsButton>
-                        <Link to="/settings">
-                            <FaCog size={32} color="white"/>
-                        </Link>
+                    <Link to="/settings">
+                        <SettingsContainer>
+                            <SettingsText>Settings</SettingsText>
+                            <FaCog size={32} color="white" />
+                        </SettingsContainer>
+                    </Link>
                 </SettingsButton>
-            </ContentContainer>        
+            </ContentContainer>
         </WeatherBackground>
     )
 }
