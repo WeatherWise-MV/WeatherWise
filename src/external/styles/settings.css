@@ -1,207 +1,203 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 .settings-container {
-    font-family: "Poppins", sans-serif;
-    margin: 50px auto;
-    max-width: 600px;
-    padding: 40px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  .settings-heading {
-    font-size: 42px;
-    text-align: center;
-    margin-bottom: 40px;
-    color: #202124;
-  }
-  
-  .settings-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .settings-form > * {
-    margin-bottom: 30px;
-  }
-  
-  label {
-    font-size: 20px;
-    font-weight: bold;
-    color: #202124;
-    margin-bottom: 10px;
-    display: block;
-  }
-  
-  input[type="text"],
-  select {
-    border: none;
-    border-radius: 10px;
-    padding: 15px;
-    font-size: 20px;
-    color: #202124;
-    width: 100%;
-    background-color: #f7f7f7;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    cursor: pointer;
-  }
-  
-  select::-ms-expand {
-    display: none;
-  }
-  
-  select option {
-    color: #202124;
-    background-color: #f7f7f7;
-  }
-  
-  .switch-align {
-    display: flex;
-    align-items: center;
-  }
-  
-  .switch-container {
-    margin-left: auto;
-  }
-  
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-    margin: 0;
-  }
-  
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
-    border-radius: 34px;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
-    border-radius: 50%;
-  }
-  
-  input:checked + .slider {
-    background-color: #2196f3;
-  }
-  
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196f3;
-  }
-  
-  input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-  }
-  
-  .save-settings-button {
-    background-color: #1a73e8;
-    border: none;
-    color: #fff;
-    font-size: 24px;
-    font-weight: bold;
-    border-radius: 10px;
-    padding: 20px;
-    cursor: pointer;
-    -webkit-transition: background-color 0.2s ease;
-    transition: background-color 0.2s ease;
-    width: 300px;
-    margin: 0 auto;
-    display: block;
-  }
-  
-  .save-settings-button:hover {
-    background-color: #0d47a1;
-  }
-  
+  font-family: "Poppins", sans-serif;
+  margin: 50px auto;
+  max-width: 600px;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
 
-  @media only screen and (max-width: 768px) {
-    .settings-container {
-      margin: 10px;
-      padding: 10px;
-      max-width: 100%;
-    }
-  
-    .settings-heading {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-  
-    .form-input {
-      margin-bottom: 10px;
-    }
-  
-    .form-label {
-      font-size: 16px;
-      margin-bottom: 5px;
-    }
-  
-    input[type="text"],
-    select {
-      font-size: 16px;
-      padding: 8px;
-    }
-  
-    .save-settings-button {
-      font-size: 16px;
-      padding: 10px;
-      width: 100%;
-      margin: 10px 0;
-    }
+.settings-heading {
+  font-size: 42px;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #202124;
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-form > * {
+  margin-bottom: 30px;
+}
+
+label {
+  font-size: 20px;
+  font-weight: bold;
+  color: #202124;
+  margin-bottom: 10px;
+  display: block;
+}
+
+input[type="text"],
+select {
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 20px;
+  color: #202124;
+  width: 100%;
+  background-color: #f7f7f7;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+select option {
+  color: #202124;
+  background-color: #f7f7f7;
+}
+
+.switch-align {
+  display: flex;
+  align-items: center;
+}
+
+.switch-container {
+  margin-left: auto;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin: 0;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.save-settings-button {
+  background-color: #1a73e8;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 20px;
+  cursor: pointer;
+  -webkit-transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease;
+  width: 300px;
+  margin: 0 auto;
+  display: block;
+}
+
+.settings-back-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin: 10px 0 0;
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  color: #1a73e8;
+}
+
+.settings-parent {
+  position: relative;
+}
+
+.back-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #1a73e8;
+  position: absolute;
+  top: 30px;
+  left: 260px;
+  display: flex;
+  align-items: center;
+}
+
+.settings-back-button svg {
+  margin-right: 5px;
+}
+
+.back-icon {
+  height: 18px;
+}
+
+
+.success-message {
+  margin-top: 20px;
+  background-color: palegreen;
+  color: #008000;
+  font-weight: bold;
+  text-align: center;
+  border: 2px solid #008000;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.error-message {
+  margin-top: 20px;
+  color: #ff0000;
+  text-align: center;
+  border: 2px solid #ff0000;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 768px) {
+  .success-message, .error-message {
+    font-size: 16px;
+    padding: 8px;
   }
-  
-  @media only screen and (max-width: 600px) {
-    .settings-container {
-      margin: 0;
-      border-radius: 0;
-      box-shadow: none;
-    }
-  
-    .settings-heading {
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-  
-    .settings-form > * {
-      margin-bottom: 10px;
-    }
-  
-    input[type="text"],
-    select {
-      font-size: 14px;
-      padding: 6px;
-    }
-  
-    .save-settings-button {
-      font-size: 14px;
-      padding: 8px;
-    }
-  }
-  
+}

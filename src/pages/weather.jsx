@@ -66,12 +66,20 @@ const Weather = () => {
       <WeatherWrapper>
         <NavContainer>
           <Nav>
-            <NavItem onClick={goBack}>Go Back</NavItem>
+            <NavItem onClick={goBack}>
+              <i className="fas fa-chevron-left"></i>
+            </NavItem>
             <SearchBar>
-                <input placeholder="Enter location name..." value={city} onChange={handleSearch}/>
-                <button type="button" onClick={handleSearch}>Search</button>
+              <input placeholder="Enter location name..." value={city} onChange={handleSearch}/>
+              <button type="button" onClick={() => {
+                const encodedCity = encodeURIComponent(city);
+                navigate(`/?city=${encodedCity}`);
+                setCity('');
+              }}>Search</button>
             </SearchBar>
-            <NavItem onClick={goToSetting}>Settings</NavItem>
+            <NavItem onClick={goToSetting}>
+              <i className="fas fa-cog"></i>
+            </NavItem>
           </Nav>
         </NavContainer>
           {weatherData ? (
