@@ -1,10 +1,43 @@
-const { Sequelize } = require('sequelize');
-const path = require('path');
+/**
+ * Database.js
+ * Backend localstorage connector
+ */
 
-const db = new Sequelize({
-    dialect: 'sqlite',
-    storage: path.join(__dirname, 'db.sqlite'),
-    logging: false
-});
-
-module.exports = {Sequelize, db}
+class Database {
+    constructor() {
+      this.dbName = "weatherwise";
+  
+      this.create = (key, value) => {
+        if (key === undefined || value === undefined) {
+          throw new Error("Database key and value must be declared");
+        }
+        localStorage.setItem(key, value);
+      };
+  
+      this.delete = (key) => {
+        if (key === undefined) {
+          throw new Error("Database key and value must be declared");
+        }
+        localStorage.removeItem(key);
+      };
+  
+      this.update = (key, value) => {
+        this.create(key, value);
+      };
+  
+      this.get = key => {
+        return localStorage.getItem(key);
+      };
+  
+      this.countItems = () => {
+        return localStorage.length;
+      };
+  
+      this.destroy = () => {
+        localStorage.clear();
+      };
+    }
+  }
+  
+  
+  export default Database;

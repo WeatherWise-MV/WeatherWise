@@ -38,7 +38,7 @@ export const WeatherBackground = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(-45deg, #ff9966, #ff5e62, #ff9966, #d9af8f);
+  background: linear-gradient(-45deg, #4b6cb7, #1CB5E0, #4b6cb7, #1CB5E0);
   background-size: 400% 400%;
   animation: ${animateBackground} 15s ease infinite;
   overflow: hidden;
@@ -134,14 +134,13 @@ export const SettingsButton = styled.div`
 export const SettingsContainer = styled.div`
   display: flex;
   align-items: center;
-  text-decoration: none;
+  text-decoration: none !imp;
 `;
 
 export const SettingsText = styled.div`
   font-weight: bold;
   margin-right: 0.5rem;
-  text-decoration: none;
-  underline: none;
+  text-decoration: none !important;
   color: white;
 `;
 
