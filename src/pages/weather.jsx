@@ -1,14 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { WeatherWrapper, Temperature, Description } from '../components/weatherComponent'
+import { NavContainer, Nav, NavItem, WeatherWrapper, Temperature, Description, LocationName, SearchBar } from '../components/weatherComponent'
+import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
 const Weather = () => {
+    const [city, setCity] = useState('');
     const [weatherData, setWeatherData] = useState(null);
     const API_KEY = '5eb3443a85dd092f1a29ccb357130b4a';
     const location = useLocation();
-    const CITY = new URLSearchParams(location.search).get('city');
-    const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${CITY}&appid=${API_KEY}&units=metric`;
+    const queryCity = new URLSearchParams(location.search).get('city');
+    const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${queryCity}&appid=${API_KEY}&units=metric`;
+
+    const navigate = useNavigate();
+
+    // goes to settings
+    const goToSetting = () => {
+      navigate(`/settings`);
+    }
+    
+    // goes to back page
+    const goBack = () => {
+      navigate(`/`);
+    }
+
+    const handleSearch = (event) => {
+      setCity(event.target.value);
+    };
 
     useEffect(() => {
         const fetchWeatherData = async () => {
@@ -27,16 +45,27 @@ const Weather = () => {
     }, [API_URL]);
   
     return (
-    <WeatherWrapper>
-        {weatherData ? (
-        <>
-            <Temperature>{weatherData.temperature}°</Temperature>
-            <Description>{weatherData.description}</Description>
-        </>
-        ) : (
-        <p>Loading...</p>
-        )}
-    </WeatherWrapper>
+      <WeatherWrapper>
+        <NavContainer>
+          <Nav>
+            <NavItem onClick={goBack}>Go Back</NavItem>
+            <SearchBar>
+                <input placeholder="Enter location name..." value={city} onChange={handleSearch}/>
+                <button type="button" onClick={handleSearch}>Search</button>
+            </SearchBar>
+            <NavItem onClick={goToSetting}>Settings</NavItem>
+          </Nav>
+        </NavContainer>
+          {weatherData ? (
+          <>
+              <LocationName>{queryCity}</LocationName>
+              <Temperature>{weatherData.temperature}°</Temperature>
+              <Description>{weatherData.description}</Description>
+          </>
+          ) : (
+          <p>Loading...</p>
+          )}
+      </WeatherWrapper>
     );
 };
 
