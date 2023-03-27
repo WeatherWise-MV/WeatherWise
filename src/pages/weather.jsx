@@ -11,7 +11,6 @@ const Weather = () => {
     const location = useLocation();
     const queryCity = new URLSearchParams(location.search).get('city');
     const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${queryCity}&appid=${API_KEY}&units=metric`;
-
     const navigate = useNavigate();
 
     // goes to settings
@@ -29,6 +28,10 @@ const Weather = () => {
     };
 
     useEffect(() => {
+      const savedLocation = localStorage.getItem("defaultLocation");
+
+      if (queryCity) {
+        // Use the location from query params
         const fetchWeatherData = async () => {
           try {
             const response = await axios.get(API_URL);
@@ -40,10 +43,25 @@ const Weather = () => {
             console.error(error);
           }
         };
-
         fetchWeatherData();
-    }, [API_URL]);
-  
+      } else if (savedLocation) {
+        // Use the saved default location
+        const defaultAPI_URL = `https://api.openweathermap.org/data/2.5/weather?q=${savedLocation}&appid=${API_KEY}&units=metric`;
+        const fetchDefaultWeatherData = async () => {
+          try {
+            const response = await axios.get(defaultAPI_URL);
+            setWeatherData({
+              temperature: Math.ceil(response.data.main.temp),
+              description: response.data.weather[0].description,
+            });
+          } catch (error) {
+            console.error(error);
+          }
+        };
+        fetchDefaultWeatherData();
+      }
+    }, [API_URL, queryCity]);
+
     return (
       <WeatherWrapper>
         <NavContainer>
@@ -58,7 +76,7 @@ const Weather = () => {
         </NavContainer>
           {weatherData ? (
           <>
-              <LocationName>{queryCity}</LocationName>
+              <LocationName>{queryCity || localStorage.getItem("defaultLocation") || "Manchester"}</LocationName>
               <Temperature>{weatherData.temperature}°</Temperature>
               <Description>{weatherData.description}</Description>
           </>
