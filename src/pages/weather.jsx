@@ -13,19 +13,14 @@ const Weather = () => {
     const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${queryCity}&appid=${API_KEY}&units=metric`;
     const navigate = useNavigate();
 
-    // goes to settings
-    const goToSetting = () => {
-      navigate(`/settings`);
-    }
-    
-    // goes to back page
-    const goBack = () => {
-      navigate(`/`);
-    }
 
     const handleSearch = (event) => {
       setCity(event.target.value);
     };
+
+    if (!localStorage.getItem("defaultLocation")) {
+      localStorage.setItem("defaultLocation", "Manchester");
+    }
 
     useEffect(() => {
       const savedLocation = localStorage.getItem("defaultLocation");
@@ -66,25 +61,22 @@ const Weather = () => {
       <WeatherWrapper>
         <NavContainer>
           <Nav>
-            <NavItem onClick={goBack}>
-              <i className="fas fa-chevron-left"></i>
-            </NavItem>
-            <SearchBar>
+          </Nav>
+          <div>
+          <SearchBar>
               <input placeholder="Enter location name..." value={city} onChange={handleSearch}/>
-              <button type="button" onClick={() => {
+              <button type="submit" onClick={() => {
                 const encodedCity = encodeURIComponent(city);
-                navigate(`/?city=${encodedCity}`);
+                navigate(`/weather?city=${encodedCity}`);
                 setCity('');
               }}>Search</button>
             </SearchBar>
-            <NavItem onClick={goToSetting}>
-              <i className="fas fa-cog"></i>
-            </NavItem>
-          </Nav>
+          </div>
+          <div></div>
         </NavContainer>
           {weatherData ? (
           <>
-              <LocationName>{queryCity || localStorage.getItem("defaultLocation") || "Manchester"}</LocationName>
+              <LocationName>{queryCity || localStorage.getItem("defaultLocation")}</LocationName>
               <Temperature>{weatherData.temperature}°</Temperature>
               <Description>{weatherData.description}</Description>
           </>

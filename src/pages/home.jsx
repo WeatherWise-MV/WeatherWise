@@ -25,9 +25,10 @@ const Home = () => {
                             placeholder="Search location..." 
                             value={location} 
                             onChange={(event) => setLocation(event.target.value)}
+                            autocomplete="off"
                             />
 
-                            <button type="button" onClick={handleSearch}>Search</button>
+                            <button type="submit" onClick={handleSearch}>Search</button>
                         </SearchButton>
                     </form>
                 </Container>

@@ -2,15 +2,19 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../external/styles/settings.css";
-import { ReactComponent as BackIcon } from "../assets/svg/back.svg";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { cities } from '../external/scripts/cities'
+
 
 function Settings() {
   const navigate = useNavigate();
   const [defaultLocation, setDefaultLocation] = useState("");
-  const [tempUnit, setTempUnit] = useState("D");
+  const [tempUnit, setTempUnit] = useState("C");
   const [trackLocation, setTrackLocation] = useState(false);
   const [savedMessage, setSavedMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => {
     const savedLocation = localStorage.getItem("defaultLocation");
@@ -28,6 +32,26 @@ function Settings() {
     }
   }, []);
 
+  const handleSelectChange = (e) => {
+    setDefaultLocation(e.target.value);
+  };
+
+  // Auto complete suggestions
+  const handleKeyDown = (e) => {
+    const query = e.target.value;
+    const filtered = cities.filter(
+      (city) =>
+        city.toLowerCase().indexOf(query.toLowerCase()) !== -1
+    );
+    setSuggestions(filtered);
+  }
+
+  const handleBlur = () => {
+    setTimeout(() => {
+      setSuggestions([]);
+    }, 200);
+  };  
+  
   const saveSettings = async () => {
     setSavedMessage("");
     setErrorMessage("");
@@ -59,58 +83,77 @@ function Settings() {
       setErrorMessage("Error saving settings. Please try again.");
     }
   };
-
+  
   return (
     <div className="settings-parent">
-    <div className="settings-container">
-      <h1>Settings</h1>
-      <div className="settings-form">
-        <div>
-          <label htmlFor="defaultLocation">Default Location:</label>
-          <input
-            type="text"
-            id="defaultLocation"
-            value={defaultLocation}
-            onChange={(e) => setDefaultLocation(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="tempUnit">Temperature Unit:</label>
-          <select
-            id="tempUnit"
-            value={tempUnit}
-            onChange={(e) => setTempUnit(e.target.value)}
-          >
-            <option value="D">Default</option>
-            <option value="C">Celsius</option>
-            <option value="K">Kelvin</option>
-            <option value="F">Fahrenheit</option>
-          </select>
-        </div>
-        <div className="switch-align">
-          <label htmlFor="trackLocation">Track Saved Location:</label>
-          <div className="switch-container">
-            <label className="switch">
-              <input
-                type="checkbox"
-                id="trackLocation"
-                checked={trackLocation}
-                onChange={(e) => setTrackLocation(e.target.checked)}
-              />
-              <span className="slider round"></span>
-            </label>
-          </div>
-        </div>
-        <button className="save-settings-button" onClick={saveSettings}>
-          Save Settings
+      <div className="settings-container">
+        <div className="heading-back-btn">
+        <button onClick={() => navigate(-1)} className="back-button">
+          <FontAwesomeIcon icon={faArrowLeft} />
         </button>
-        {savedMessage && <p className="success-message">{savedMessage}</p>}
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        <h1>Settings</h1>
+        </div>
+        <div className="settings-form">
+          <label htmlFor="defaultLocation">Default Location:</label>
+          <div className="autocomplete">
+            <select
+              id="defaultLocation"
+              value={defaultLocation}
+              onChange={handleSelectChange}
+              onKeyDown={handleKeyDown}
+              onBlur={() => setSuggestions([])}
+            >
+              <option value="">Select a city...</option>
+              {cities.map((city) => (
+                <option key={city} value={city}>
+                  {city}
+                </option>
+              ))}
+            </select>
+            {suggestions.length > 0 && (
+              <select onChange={handleSelectChange}>
+                <option value="">Select a city...</option>
+                {suggestions.map((suggestion) => (
+                  <option key={suggestion} value={suggestion}>
+                    {suggestion}
+                  </option>
+                ))}
+              </select>
+            )}
+          </div>
+          <div>
+            <label htmlFor="tempUnit">Temperature Unit:</label>
+            <select
+              id="tempUnit"
+              value={tempUnit}
+              onChange={(e) => setTempUnit(e.target.value)}
+            >
+              <option value="C">Celsius</option>
+              <option value="K">Kelvin</option>
+              <option value="F">Fahrenheit</option>
+            </select>
+          </div>
+          <div className="switch-align">
+            <label htmlFor="trackLocation">Track Saved Location:</label>
+            <div className="switch-container">
+              <label className="switch">
+                <input
+                  type="checkbox"
+                  id="trackLocation"
+                  checked={trackLocation}
+                  onChange={(e) => setTrackLocation(e.target.checked)}
+                />
+                <span className="slider round"></span>
+              </label>
+            </div>
+          </div>
+          <button className="save-settings-button" onClick={saveSettings}>
+            Save Settings
+          </button>
+          {savedMessage && <p className="success-message">{savedMessage}</p>}
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
+        </div>
       </div>
-    </div>
-    <button onClick={() => navigate(-1)} className="back-button">
-    <BackIcon className="back-icon" />
-  </button>
     </div>
   );
 }

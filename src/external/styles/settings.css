@@ -1,14 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
+.settings-parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .settings-container {
   font-family: "Poppins", sans-serif;
-  margin: 50px auto;
   max-width: 600px;
   padding: 40px;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.heading-back-btn {
+  display: block;
+  justify-content: flex-start;
+  margin-right: auto;
 }
 
 .settings-heading {
@@ -35,19 +51,50 @@ label {
   display: block;
 }
 
+.autocomplete {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
 input[type="text"],
 select {
-  border: none;
-  border-radius: 10px;
+  width: 300px;
   padding: 15px;
   font-size: 20px;
   color: #202124;
+  background-color: #f7f7f7;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.suggestions {
+  position: absolute;
   width: 100%;
   background-color: #f7f7f7;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+  border: none;
+  border-radius: 0 0 10px 10px;
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.suggestion {
+  padding: 15px;
+  font-size: 20px;
+  color: #202124;
   cursor: pointer;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.suggestion:last-child {
+  border-bottom: none;
+}
+
+.suggestion:hover {
+  background-color: #e0e0e0;
 }
 
 select::-ms-expand {
@@ -138,40 +185,22 @@ input:checked + .slider:before {
   display: block;
 }
 
-.settings-back-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  margin: 10px 0 0;
-  display: flex;
-  align-items: center;
-  font-size: 24px;
-  color: #1a73e8;
-}
 
 .settings-parent {
   position: relative;
 }
 
 .back-button {
-  background-color: transparent;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
   border: none;
-  cursor: pointer;
-  font-size: 16px;
-  color: #1a73e8;
-  position: absolute;
-  top: 30px;
-  left: 260px;
-  display: flex;
-  align-items: center;
+  border-radius: 5px;
 }
 
-.settings-back-button svg {
+.back-button svg {
   margin-right: 5px;
-}
-
-.back-icon {
-  height: 18px;
 }
 
 

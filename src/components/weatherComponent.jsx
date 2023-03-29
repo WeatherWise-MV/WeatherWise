@@ -26,9 +26,9 @@ export const WeatherWrapper = styled.div`
 
 export const NavContainer = styled.nav`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 0;
   background-color: #333;
   position: fixed;
   top: 0;
@@ -42,7 +42,6 @@ export const Nav = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
-  position: absolute;
   left: 1rem;
 `;
 
@@ -70,28 +69,33 @@ export const SearchBar = styled.form`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 1.25rem;
-  border: black solid 1px;
-  border-radius: 2px;
+  margin: 1rem;
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   & input {
-    padding: 0.625rem;
+    padding: 0.5rem;
     font-size: 0.875rem;
     border: none;
     outline: none;
     font-weight: bold;
+    background-color: transparent;
+    width: 100%;
   }
 
   & button {
-    background-color: black;
+    background-color: #333;
     font-size: 0.875rem;
-    padding: 0 0.625rem;
+    padding: 0.5rem 1rem;
     color: white;
     border: none;
     outline: none;
     cursor: pointer;
     font-weight: bold;
+    border-radius: 0 4px 4px 0;
   }
 `;
 
