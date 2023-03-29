@@ -19,13 +19,13 @@ const Home = () => {
                 <HomeLabel>Welcome to WeatherWise - All Things Weather!</HomeLabel>
                 <Container>
                     <SearchLocationLabel>Provide location for weather info</SearchLocationLabel>
-                    <form onSubmit={handleSearch}>
+                    <form onSubmit={handleSearch} autoComplete="off">
                         <SearchButton>
                             <input 
                             placeholder="Search location..." 
                             value={location} 
                             onChange={(event) => setLocation(event.target.value)}
-                            autocomplete="off"
+                            autoComplete="off"
                             />
 
                             <button type="submit" onClick={handleSearch}>Search</button>

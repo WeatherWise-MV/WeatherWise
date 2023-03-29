@@ -63,14 +63,17 @@ const Weather = () => {
           <Nav>
           </Nav>
           <div>
-          <SearchBar>
-              <input placeholder="Enter location name..." value={city} onChange={handleSearch}/>
-              <button type="submit" onClick={() => {
-                const encodedCity = encodeURIComponent(city);
-                navigate(`/weather?city=${encodedCity}`);
-                setCity('');
-              }}>Search</button>
-            </SearchBar>
+            <form onSubmit={handleSearch} autoComplete="off">
+              <SearchBar>
+                <input 
+                placeholder="Enter location name..." 
+                value={city} 
+                onChange={handleSearch}
+                />
+                
+                <button type="submit" onClick={() => {navigate(`/weather?city=${city}`);}}>Search</button>
+              </SearchBar>
+            </form>
           </div>
           <div></div>
         </NavContainer>

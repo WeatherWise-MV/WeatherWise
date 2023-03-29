@@ -20,7 +20,7 @@ function Settings() {
     const savedLocation = localStorage.getItem("defaultLocation");
     const savedUnit = localStorage.getItem("tempUnit");
     const savedTrackLocation = localStorage.getItem("trackLocation");
-
+  
     if (savedLocation) {
       setDefaultLocation(savedLocation);
     }
@@ -30,7 +30,23 @@ function Settings() {
     if (savedTrackLocation) {
       setTrackLocation(JSON.parse(savedTrackLocation));
     }
-  }, []);
+  
+    // clear saved message after 1.5 seconds
+    if (savedMessage) {
+      const timer = setTimeout(() => {
+        setSavedMessage(null);
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  
+    // clear error message after 1.5 seconds
+    if (errorMessage) {
+      const timer = setTimeout(() => {
+        setErrorMessage(null);
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [savedMessage, errorMessage]);
 
   const handleSelectChange = (e) => {
     setDefaultLocation(e.target.value);
@@ -44,13 +60,7 @@ function Settings() {
         city.toLowerCase().indexOf(query.toLowerCase()) !== -1
     );
     setSuggestions(filtered);
-  }
-
-  const handleBlur = () => {
-    setTimeout(() => {
-      setSuggestions([]);
-    }, 200);
-  };  
+  } 
   
   const saveSettings = async () => {
     setSavedMessage("");
@@ -76,11 +86,11 @@ function Settings() {
       localStorage.setItem("defaultLocation", defaultLocation);
       localStorage.setItem("tempUnit", tempUnit);
       localStorage.setItem("trackLocation", JSON.stringify(trackLocation));
-      setSavedMessage("You have successfully saved.");
+      setSavedMessage("Settings saved successfully");
       setErrorMessage("");
     } catch (error) {
       setSavedMessage("");
-      setErrorMessage("Error saving settings. Please try again.");
+      setErrorMessage("There was an error saving your settings");
     }
   };
   
