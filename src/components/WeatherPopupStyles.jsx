@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const PopupContainer = styled.div`
-font-family: 'Poppins', sans-serif;
   position: fixed;
   top: 20vh;
   margin-top: 33.9%;
@@ -16,7 +15,6 @@ font-family: 'Poppins', sans-serif;
 
 export const Title = styled.h1`
   font-size: 24px;
-  margin: 10px;
   padding: 2rem;
 `;
 
