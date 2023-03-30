@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { NavContainer, Nav, NavItem, WeatherWrapper, Temperature, Description, LocationName, SearchBar } from '../components/weatherComponent'
+import { NavContainer, Nav, WeatherWrapper, Temperature, Description, LocationName, SearchBar } from '../components/weatherComponent'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
