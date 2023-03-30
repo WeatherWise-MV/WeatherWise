@@ -116,3 +116,18 @@ export const Description = styled.p`
   margin: 0;
 `;
 
+export const ShowPopupButton = styled.button`
+position: absolute;
+top: 1rem;
+right: 1rem;
+background-color: #333;
+font-size: 0.875rem;
+padding: 0.5rem 1rem;
+color: white;
+outline: none;
+cursor: pointer;
+font-weight: bold;
+border: 1px solid #ccc;
+border-radius: 4px;
+z-index: 1;
+`;

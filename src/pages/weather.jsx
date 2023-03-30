@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { NavContainer, Nav, NavItem, WeatherWrapper, Temperature, Description, LocationName, SearchBar } from '../components/weatherComponent'
+import { NavContainer, Nav, NavItem, WeatherWrapper, Temperature, Description, LocationName, SearchBar, ShowPopupButton } from '../components/weatherComponent'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import WeatherPopup from '../components/WeatherPopup';
 
 const Weather = () => {
     const [city, setCity] = useState('');
     const [weatherData, setWeatherData] = useState(null);
+    const [showPopup, setShowPopup] = useState(false);
     const API_KEY = '5eb3443a85dd092f1a29ccb357130b4a';
     const location = useLocation();
     const queryCity = new URLSearchParams(location.search).get('city');
@@ -56,6 +58,10 @@ const Weather = () => {
         fetchDefaultWeatherData();
       }
     }, [API_URL, queryCity]);
+    
+    const handleTogglePopup = () => {
+      setShowPopup(!showPopup);
+    };
 
     return (
       <WeatherWrapper>
@@ -86,8 +92,10 @@ const Weather = () => {
           ) : (
           <p>Loading...</p>
           )}
-      </WeatherWrapper>
-    );
-};
-
-export default Weather;
+          <ShowPopupButton onClick={handleTogglePopup}>Show Popup</ShowPopupButton>
+      <WeatherPopup isOpen={showPopup} onClose={handleTogglePopup} queryCity={queryCity || localStorage.getItem("defaultLocation")} />
+    </WeatherWrapper>
+            );
+        };
+        
+        export default Weather;
