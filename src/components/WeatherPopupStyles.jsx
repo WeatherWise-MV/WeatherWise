@@ -1,16 +1,24 @@
 import styled from 'styled-components';
 
 export const PopupContainer = styled.div`
-  position: fixed;
-  top: 20vh;
-  margin-top: 33.9%;
-  right: 0vw;
-  transform: translate(0, -50%);
-  width: 30%;
-  height: 160%;
-  background-color: #f2f2f2;
+  display: flex;
+  top: ${props => props.navHeight + 10}px;
+  right: 0;
+  width: 40%;
+  height: auto;
+  align-items: center;
+  margin-top: 3rem;
+  background: #333;
+  border-radius: 1rem;
+  color: white;
   z-index: 2;
-  display: ${props => props.isOpen ? 'block' : 'none'};
+  overflow-y: scroll;
+  
+  @media (max-width: 767px) {
+    width: 100%;
+    top: ${props => props.navHeight + 60}px;
+    height: calc(100vh - ${props => props.navHeight + 64}px);
+  }
 `;
 
 export const Title = styled.h1`
@@ -56,7 +64,16 @@ export const HighLowContainer = styled.div`
   align-items: center;
 `;
 
-export const Temperature = styled.div`
+export const TemperatureHigh = styled.div`
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0.3rem;
+`;
+export const TemperatureLow = styled.div`
   font-size: 1.5rem;
   font-weight: bold;
   color: white;
@@ -89,21 +106,30 @@ export const WeatherInfoContainer = styled.div`
 export const Day = styled.div`
   font-size: 1.2rem;
   font-weight: bold;
+  text-transform: capitalize;
   color: black;
 `;
 
 export const Condition = styled.div`
   font-size: 0.8rem;
   color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
 `;
 
 export const ForecastContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 2rem;
-`;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-wrap: wrap;
 
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
+`;
 
 export const DayContainer = styled.div`
   display: flex;
@@ -113,7 +139,6 @@ export const DayContainer = styled.div`
   padding: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   height: 1rem;
   width: 100%;
   background-color: #f7f7f7;
@@ -127,14 +152,32 @@ export const DayContainer = styled.div`
   & > div:first-child {
     display: flex;
     align-items: center;
-    justify-content: centre; 
+    justify-content: center;
     width: 45%;
+    margin-bottom: 0.5rem;
+
+    @media (max-width: 767px) {
+      width: 100%;
+      justify-content: flex-start;
+    }
   }
 
   & > div:last-child {
     display: flex;
     align-items: center;
-    justify-content: flex-start; 
+    justify-content: flex-start;
     width: 35%;
+    margin-bottom: 0.5rem;
+
+    @media (max-width: 767px) {
+      width: 100%;
+      justify-content: flex-start;
+    }
+  }
+
+  @media (max-width: 767px) {
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    height: auto;
   }
 `;

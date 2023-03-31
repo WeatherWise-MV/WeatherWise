@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { PopupContainer, Title } from './WeatherPopupStyles';
 import RainChart from './RainChart';
 import ThreeDayForecast from './ThreeDayForecast';
 
-const WeatherPopup = ({ isOpen, onClose, queryCity }) => {
+const WeatherPopup = ({ isOpen, onClose, queryCity, navHeight }) => {
   const [hourlyData, setHourlyData] = useState([]);
   const API_KEY = '5eb3443a85dd092f1a29ccb357130b4a';
   const API_URL = `https://api.openweathermap.org/data/2.5/forecast?q=${queryCity}&appid=${API_KEY}&units=metric`;
+  const navRef = useRef(null);
 
   useEffect(() => {
     const fetchWeatherData = async () => {
@@ -23,7 +24,7 @@ const WeatherPopup = ({ isOpen, onClose, queryCity }) => {
   }, [API_URL]);
 
   return (
-    <PopupContainer isOpen={isOpen} onClose={onClose}>
+    <PopupContainer navHeight={navHeight} isOpen={isOpen} onClose={onClose}>
       <Title>Chance of Rain</Title>
       <RainChart data={hourlyData} />
  

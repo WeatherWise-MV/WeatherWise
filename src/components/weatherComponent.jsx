@@ -1,5 +1,8 @@
 import styled, { keyframes } from 'styled-components';
 
+// --- BACKGROUND CONTENT --- //
+
+// animation for the background gradient
 const animateBackground = keyframes`
   0% {
     background-position: 0% 50%;
@@ -12,18 +15,23 @@ const animateBackground = keyframes`
   }
 `;
 
+// main container for the weather page
 export const WeatherWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: calc(100vh - 4rem); /* Subtract the height of the navbar from the viewport height */
-  padding-top: 4rem; /* Add padding to the top of the container to push it below the navbar */
+  height: calc(100vh - 4rem);
+  padding-top: 4rem;
   background: linear-gradient(45deg, #3465d9, #3f86ed, #4ba8ff, #5fd5ff, #a4f4ff);
   background-size: 400% 400%;
   animation: ${animateBackground} 15s ease infinite;
+  position: relative; /* Add this line */
 `;
 
+// --- NAV BAR CONTENT --- //
+
+// main nav container
 export const NavContainer = styled.nav`
   display: flex;
   justify-content: space-between;
@@ -37,6 +45,7 @@ export const NavContainer = styled.nav`
   z-index: 1;
 `;
 
+// nav container
 export const Nav = styled.ul`
   display: flex;
   list-style: none;
@@ -45,25 +54,7 @@ export const Nav = styled.ul`
   left: 1rem;
 `;
 
-export const NavItem = styled.li`
-  font-size: 1rem;
-  color: #fff;
-  font-weight: bold;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-
-  &:not(:last-child) {
-    margin-right: 1rem;
-  }
-
-  &:hover {
-    color: #f4f4f4;
-    background-color: #555;
-    height: 100%;
-  }
-`;
-
+// search bar
 export const SearchBar = styled.form`
   display: flex;
   flex-direction: row;
@@ -99,35 +90,130 @@ export const SearchBar = styled.form`
   }
 `;
 
-export const LocationName = styled.span`
-  font-size: 5rem;
-  font-weight: bold;
-  margin: 0;
+// --- MAIN CONTENT --- //
+
+// main container for the weather page
+export const MainContainer = styled.div`
+  display: flex;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
 `;
 
+export const ContentContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 2.5rem;
+  max-width: 80%;
+
+  & > * {
+    flex-grow: 1; /* Allow the child elements to expand */
+  }
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    margin: 1rem;
+  }
+`;
+
+// container for location
+export const LocationContainer = styled.div`
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 30rem;
+  width: auto;
+`;
+
+// current location tag
+export const CurrentLocationLabel = styled.h2`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: .5rem;
+  color: #101014;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+`;
+
+// current location
+export const CurrentLocation = styled.h1`
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2.2rem;
+  line-height: .5rem;
+  color: #101014;
+
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+  }
+`;
+
+export const WeatherInfoContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (max-width: 768px) {
+    width: 70vw;
+    height: 35vh;
+    margin-left: 0;
+  }
+`;
+
+export const WeatherInfoBoxWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-right: 1rem;
+`;
+
+export const WeatherInfoColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+`;
+
+export const WeatherInfoBox = styled.div`
+  width: 23rem;
+  height: 11.375rem;
+  background: #333;
+  border-radius: 1rem;
+  color: #fff;
+  margin-left: auto;
+
+  @media (max-width: 768px) {
+    width: 70vw;
+    height: 35vh;
+    border-radius: 2rem;
+  }
+`;
+
+
+// weather info box content
 export const Temperature = styled.h1`
-  font-size: 64px;
+  font-size: 48px;
   font-weight: bold;
   margin: 0;
 `;
 
+// weather info box content
 export const Description = styled.p`
   font-size: 24px;
   margin: 0;
 `;
 
-export const ShowPopupButton = styled.button`
-position: absolute;
-top: 1rem;
-right: 1rem;
-background-color: #333;
-font-size: 0.875rem;
-padding: 0.5rem 1rem;
-color: white;
-outline: none;
-cursor: pointer;
-font-weight: bold;
-border: 1px solid #ccc;
-border-radius: 4px;
-z-index: 1;
+export const WeatherIcon = styled.img`
+  width: 4rem;
+  height: 4rem;
+  margin-right: 0.5rem;
 `;
